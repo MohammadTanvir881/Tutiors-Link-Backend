@@ -9,7 +9,7 @@ const route = Router();
 
 route.post(
   "/register",
-  validateRequest(userValidation.createUserValidationSchema),
+  // validateRequest(userValidation.createUserValidationSchema),
   UserController.createUser
 );
 
