@@ -5,7 +5,7 @@ import { User } from "../user/user.model";
 const blockAdminIntoDb = async (userId: string) => {
   const user = await User.findById(userId);
   if (!user) {
-    throw new AppError(404, "Blog Not Found");
+    throw new AppError(404, "User Not Found");
   }
   // console.log("from admin services", user);
   const userStatus = user.isBlocked;
