@@ -64,6 +64,12 @@ const updateBlogIntoDb = async (
   user: Record<string, unknown>
 ) => {
   const blog = await BlogModel.findById(id);
+  if(!blog){
+    throw new AppError(
+      400,
+      "Blog Not Found"
+    );
+  }
   const authorId = blog?.author;
   const userId = new ObjectId(user._id as string);
   if (!(authorId as ObjectId).equals(userId)) {
@@ -85,6 +91,12 @@ const deleteBlogsFromDb = async (
   user: Record<string, unknown>
 ) => {
     const blog = await BlogModel.findById(id);
+    if(!blog){
+      throw new AppError(
+        400,
+        "Blog Not Found"
+      );
+    }
     const authorId = blog?.author;
     const userId = new ObjectId(user._id as string);
     if (!(authorId as ObjectId).equals(userId)) {
