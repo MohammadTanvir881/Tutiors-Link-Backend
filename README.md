@@ -1,6 +1,10 @@
 Project Summary
 The project involves building a blogging platform backend using TypeScript, Node.js, Express.js, and MongoDB. The system supports two roles: Admin and User, with distinct permissions. It implements secure authentication, role-based access control, and public APIs with enhanced functionalities like searching, sorting, and filtering.
 
+# live Url backend
+https://assignment-3-delta-ecru.vercel.app/
+
+
 Key Features
 User Roles
 Admin:
