@@ -4,8 +4,7 @@ import { BlogServices } from "./blog.services";
 import AppError from "../../app/Error/AppError";
 
 const createBlog = catchAsync(async (req, res) => {
-  console.log("from blog controller", req.user);
-  const user = req.user;
+  // console.log("from blog controller", req.user);
 
   const result = await BlogServices.createBlogIntoDb(req.user, req.body);
   res.status(200).json({

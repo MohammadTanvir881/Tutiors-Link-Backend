@@ -7,7 +7,7 @@ import config from "../../app/config";
 
 const loginUser = async (payload: ILoginUser) => {
   const user = await User.findOne({ email: payload?.email }).select("+password");
-  console.log(user);
+  // console.log(user);
   if (!user) {
     throw new AppError(404, "User Not Found");
   }

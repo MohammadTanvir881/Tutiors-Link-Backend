@@ -15,9 +15,9 @@ const auth = (...requiredRoles: TUserRole[]) => {
     const tokenModified: string[] = (tokenFromFrontend as string)
       ?.toString()
       .split(" ");
-    console.log(tokenModified);
+    // console.log(tokenModified);
     const token = tokenModified[1];
-    console.log("from auth", token);
+    // console.log("from auth", token);
     if (!token) {
       throw new AppError(401, "Unauthorized Access");
     }
@@ -34,7 +34,7 @@ const auth = (...requiredRoles: TUserRole[]) => {
       throw new AppError(404, "User Not Found");
     }
 
-    // check if the user is blocked deleted
+    // check if the user is blocked 
     const isBlocked = user.isBlocked;
     if (isBlocked) {
       throw new AppError(500, "This user is Blocked");

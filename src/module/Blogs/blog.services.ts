@@ -14,7 +14,7 @@ const createBlogIntoDb = async (
 };
 
 const getAllBlogs = async (query: Record<string, unknown>) => {
-  console.log("baseQuery", query);
+  // console.log("baseQuery", query);
   const queryObject = { ...query };
 
   let search = "";
@@ -36,7 +36,7 @@ const getAllBlogs = async (query: Record<string, unknown>) => {
   // FILTERING fUNCTIONALITY:
   const excludeFields = ["search", "sortBy", "sortOrder"];
   excludeFields.forEach((el) => delete queryObject[el]);
-  console.log("before filter", queryObject);
+  // console.log("before filter", queryObject);
   if (queryObject.filter) {
     queryObject.author = queryObject.filter;
     delete queryObject.filter; // Remove `filter` key

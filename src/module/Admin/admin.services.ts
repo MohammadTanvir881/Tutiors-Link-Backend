@@ -7,7 +7,7 @@ const blockAdminIntoDb = async (userId: string) => {
   if (!user) {
     throw new AppError(404, "Blog Not Found");
   }
-  console.log("from admin services", user);
+  // console.log("from admin services", user);
   const userStatus = user.isBlocked;
   if (userStatus) {
     throw new AppError(500, "This User Is Already Blocked");
@@ -25,7 +25,7 @@ const deleteBlogFromDb = async (id: string) => {
   if (!blog) {
     throw new AppError(404, "Blog Not Found");
   }
-  console.log("from admin services", blog);
+  // console.log("from admin services", blog);
   const deletedStatus = blog.isDeleted;
   if (deletedStatus) {
     throw new AppError(500, "This Blog Is Already Deleted");
