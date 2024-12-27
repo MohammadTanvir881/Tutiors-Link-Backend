@@ -35,14 +35,20 @@ const loginUser = async (payload: ILoginUser) => {
     _id : user?._id
   };
 
-  const AccessToken = createToken(
+  // const AccessToken = createToken(
+  //   jwtPayload,
+  //   config.Access_Token_Secret as string,
+  //   config.Access_Token_ExpireIn as string
+  // );
+  const token = createToken(
     jwtPayload,
     config.Access_Token_Secret as string,
     config.Access_Token_ExpireIn as string
   );
  
   return {
-    AccessToken,
+    // AccessToken,
+    token
   };
 };
 export const AuthServices = {
