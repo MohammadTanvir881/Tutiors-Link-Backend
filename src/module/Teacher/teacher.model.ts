@@ -94,7 +94,15 @@ const teacherSchema = new Schema<TTeacher>(
   },
   {
     timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
   }
 );
+
+teacherSchema.virtual("reviews", {
+  ref: "Review", // the model to use
+  localField: "_id", // find reviews where `teacher` is equal to `_id`
+  foreignField: "teacher", // the key in Review schema that refers to the teacher
+});
 
 export const Teacher = model<TTeacher>("Teacher", teacherSchema);
