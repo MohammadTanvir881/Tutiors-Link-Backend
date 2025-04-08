@@ -1,0 +1,187 @@
+{
+	"info": {
+		"_postman_id": "f9a99c68-212e-478a-a24b-83b3b4deb155",
+		"name": "Assignment 6 Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39749761"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Create Student",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"12345678\",\n    \"student\": {\n        \"name\": \"John Doe\",\n        \"email\": \"student1@gmail.com\",\n        \"gender\": \"male\",\n        \"dateOfBirth\": \"2000-05-15T00:00:00.000Z\",\n        \"contactNo\": \"01712345678\",\n        \"emergencyContactNo\": \"01812345678\",\n        \"bloodGroup\": \"A+\",\n        \"presentAddress\": \"123 Main Street, Dhaka\",\n        \"permanentAddress\": \"456 Village Road, Khulna\",\n        \"profileImg\": \"https://example.com/images/profile.jpg\",\n        \"coverImg\": \"https://example.com/images/cover.jpg\",\n        \"isDeleted\": false\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/users/create-student",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"users",
+								"create-student"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create teacher",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"12345678\",\n    \"teacher\": {\n        \"name\": \"Md. Rahim Uddin\",\n        \"email\": \"rahim.uddin@example.com\",\n        \"gender\": \"male\",\n        \"dateOfBirth\": \"1985-06-15T00:00:00.000Z\",\n        \"user\": \"661190abf3c8a7b9de2a5e8f\",\n        \"contactNo\": \"01712345678\",\n        \"emergencyContactNo\": \"01898765432\",\n        \"bloodGroup\": \"O+\",\n        \"designation\": \"Senior Lecturer\",\n        \"bio\": \"Passionate physics teacher with over 10 years of experience in guiding students towards academic excellence.\",\n        \"subjects\": [\n            \"Physics\"\n        ],\n        \"presentAddress\": \"House #10, Road #5, Dhanmondi, Dhaka\",\n        \"permanentAddress\": \"Village: Charigram, Upazila: Singair, District: Manikganj\",\n        \"profileImg\": \"https://example.com/images/rahim-profile.jpg\",\n        \"coverImg\": \"https://example.com/images/rahim-cover.jpg\",\n        \"isDeleted\": false\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/users/create-teacher",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"users",
+								"create-teacher"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" : \"student1@gmail.com\",\n    \"password\" : \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" : \"student1@gmail.com\",\n    \"password\" : \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reviews",
+			"item": [
+				{
+					"name": "create review",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"teacher\": \"67f2c0e471efcda488910b81\",\n  \"student\": \"67f37943618d6d0c53e3a1f6\",\n  \"comment\": \"Great tutor! 2nd reviews\",\n  \"rating\": 5,\n  \"review\": \"He explained quantum mechanics in a really simple way. Very impressive.\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/reviews",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Teachers",
+			"item": [
+				{
+					"name": "getAllTeachers",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
