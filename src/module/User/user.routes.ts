@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response, Router } from "express";
+import { Router } from "express";
 import validateRequest from "../../utils/validateRequest";
 import { studentValidation } from "../Student/student.validation";
 import { UserControllers } from "./user.controller";
