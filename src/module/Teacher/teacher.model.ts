@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-import { BloodGroup, Gender } from "./teacher.constant";
+import { BloodGroup, Districts, Gender } from "./teacher.constant";
 import { TTeacher } from "./teacher.interface";
 
 const teacherSchema = new Schema<TTeacher>(
@@ -39,6 +39,13 @@ const teacherSchema = new Schema<TTeacher>(
       enum: {
         values: BloodGroup,
         message: "{VALUE} is not a valid blood group",
+      },
+    },
+    district: {
+      type: String,
+      enum: {
+        values: Districts,
+        message: "{VALUE} is not a valid district",
       },
     },
     designation: {
