@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const createTeacherValidationSchema = z.object({
+const createTeacherValidationSchema = z.object({
   body: z.object({
     password: z.string().max(20),
     teacher: z.object({
@@ -55,6 +55,15 @@ export const createTeacherValidationSchema = z.object({
   }),
 });
 
+const hourlyRateValidationSchema = z.object({
+  body: z.object({
+    hourlyRate: z
+      .number({ required_error: "Hourly rate is required" })
+      .min(0, "Hourly rate must be a positive number"),
+  }),
+});
+
 export const teacherValidation = {
   createTeacherValidationSchema,
+  hourlyRateValidationSchema,
 };

@@ -86,7 +86,25 @@ const teacherSchema = new Schema<TTeacher>(
       type: String,
       required: [true, "Permanent address is required"],
     },
-    profileImg: { type: String, default: "" },
+    profileImg: {
+      type: String,
+      default: "",
+      required: [true, "Profile image is required"],
+    },
+    coverImg: {
+      type: String,
+      default: "",
+      required: [true, "Cover image is required"],
+    },
+    avability: {
+      type: Boolean,
+      default: false,
+    },
+    hourlyRate: {
+      type: Number,
+      default: 0,
+      min: 0,
+    },
     isDeleted: {
       type: Boolean,
       default: false,

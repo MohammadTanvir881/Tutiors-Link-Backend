@@ -50,5 +50,7 @@ export type TTeacher = {
   permanentAddress: string;
   profileImg?: string;
   coverImg?: string;
+  avability: boolean;
+  hourlyRate?: number;
   isDeleted: boolean;
 };
