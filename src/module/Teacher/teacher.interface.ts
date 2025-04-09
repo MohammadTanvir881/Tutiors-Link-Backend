@@ -18,8 +18,9 @@ export type TTeacher = {
   permanentAddress: string;
   profileImg?: string;
   coverImg?: string;
-  avability: boolean;
+  availability: boolean;
   hourlyRate?: number;
   isDeleted: boolean;
   reviews: { rating: number }[];
+  createdAt: Date;
 };

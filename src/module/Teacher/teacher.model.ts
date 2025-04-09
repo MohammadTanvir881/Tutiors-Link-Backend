@@ -103,7 +103,7 @@ const teacherSchema = new Schema<TTeacher>(
       default: "",
       required: [true, "Cover image is required"],
     },
-    avability: {
+    availability: {
       type: Boolean,
       default: false,
     },

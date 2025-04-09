@@ -19,7 +19,9 @@ const getSingleTeacher = catchAsync(async (req, res) => {
 
 // get All Teacher
 const getAllTeacher = catchAsync(async (req, res) => {
-  const result = await TeacherServices.getAllTeacherFromDb();
+  const result = await TeacherServices.getAllTeacherFromDb(
+    req.query as Record<string, undefined>
+  );
 
   //   sendResponse(res, {
   //     statusCode: status.OK,
