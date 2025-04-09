@@ -180,6 +180,87 @@
 						"header": []
 					},
 					"response": []
+				},
+				{
+					"name": "TurnOnAvability",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/teachers/avabilityStatusOn/67f60e8f5bf5402040621753",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"teachers",
+								"avabilityStatusOn",
+								"67f60e8f5bf5402040621753"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TurnOfAvability",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/teachers/avabilityStatusOn/67f60e8f5bf5402040621753",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"teachers",
+								"avabilityStatusOn",
+								"67f60e8f5bf5402040621753"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Hourly Rate",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzdHVkZW50MUBnbWFpbC5jb20iLCJyb2xlIjoic3R1ZGVudCIsInVzZXJJZCI6IjY3ZjYxZTQ4MzVhZjdlOWM5ZDk0MzFlMCIsImlhdCI6MTc0NDE4MzMzOSwiZXhwIjoxNzQ0Nzg4MTM5fQ.LR8NziuumYSrNXT7W8bQuHQthsRIEULGrwo6RfbyXS0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"hourlyRate\": 250\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/teachers/hourlyRate/67f61673ef3318102f15059e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"teachers",
+								"hourlyRate",
+								"67f61673ef3318102f15059e"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
