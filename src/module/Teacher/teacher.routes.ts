@@ -6,10 +6,13 @@ import auth from "../Auth/auth";
 import { USER_ROLE } from "../User/user.constants";
 
 const router = Router();
-//! get all teacher
+// get all teacher
 router.get("/", TeacherControllers.getAllTeacher);
 
-//! Update Hourly Rate
+// get single teacher
+router.get("/:id", TeacherControllers.getSingleTeacher);
+
+// Update Hourly Rate
 router.patch(
   "/hourlyRate/:id",
   auth(USER_ROLE.teacher),
@@ -17,14 +20,14 @@ router.patch(
   TeacherControllers.updateHourlyRate
 );
 
-//! turn on availability status
+// turn on availability status
 router.patch(
   "/avabilityStatusOn/:id",
   auth(USER_ROLE.teacher),
   TeacherControllers.turnOnAvabilityStatus
 );
 
-//! turn off availability status
+// turn off availability status
 router.patch(
   "/avabilityStatusOf/:id",
   auth(USER_ROLE.teacher),

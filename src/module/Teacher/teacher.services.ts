@@ -1,21 +1,55 @@
 import AppError from "../../app/Error/AppError";
 import { Teacher } from "./teacher.model";
 
-
-//! get All Teacher
-
+// get All Teacher
 const getAllTeacherFromDb = async () => {
   const result = await Teacher.find().populate("reviews");
-  return result;
+
+  const updatedResult = result.map((teacher) => {
+    const ratings = teacher.reviews.map((r: { rating: number }) => r.rating);
+    const total = ratings.reduce(
+      (sum: number, rating: number) => sum + rating,
+      0
+    );
+    const averageRating = ratings.length
+      ? parseFloat((total / ratings.length).toFixed(2))
+      : "No reviews";
+
+    return {
+      ...teacher.toObject(), // Convert Mongoose Document to plain object
+      averageRating,
+    };
+  });
+  return updatedResult;
 };
 
-//! update hourly rate
+// get single teacher
+const getSingleTeacherFromDB = async (Id: string) => {
+  const teacher = await Teacher.findById(Id).populate("reviews");
+  if (!teacher) {
+    throw new AppError(404, "Teacher Not Found");
+  }
+  const ratings = teacher.reviews.map((r: { rating: number }) => r.rating);
+  const total = ratings.reduce(
+    (sum: number, rating: number) => sum + rating,
+    0
+  );
+  const averageRating = ratings.length
+    ? parseFloat((total / ratings.length).toFixed(2))
+    : "No reviews";
+  return {
+    ...teacher.toObject(), // Convert Mongoose Document to plain object
+    averageRating,
+  };
+};
+
+// update hourly rate
 const updateHourlyRateIntoDb = async (
   Id: string,
   payload: { hourlyRate: number }
 ) => {
   console.log(payload);
-  
+
   const teacher = await Teacher.findById(Id);
 
   console.log(teacher);
@@ -31,9 +65,8 @@ const updateHourlyRateIntoDb = async (
   return result;
 };
 
-//! turn on availability status
+// turn on availability status
 const turnOnAvabilityStatusIntoDb = async (Id: string) => {
-  // console.log("from services", userId);
   const teacher = await Teacher.findById(Id);
   console.log(teacher);
   if (!teacher) {
@@ -48,9 +81,8 @@ const turnOnAvabilityStatusIntoDb = async (Id: string) => {
   return result;
 };
 
-//! turn off availability status
+// turn off availability status
 const turnOfAvabilityStatusIntoDb = async (Id: string) => {
-  // console.log("from services", userId);
   const teacher = await Teacher.findById(Id);
   console.log(teacher);
   if (!teacher) {
@@ -67,6 +99,7 @@ const turnOfAvabilityStatusIntoDb = async (Id: string) => {
 
 export const TeacherServices = {
   getAllTeacherFromDb,
+  getSingleTeacherFromDB,
   turnOnAvabilityStatusIntoDb,
   turnOfAvabilityStatusIntoDb,
   updateHourlyRateIntoDb,

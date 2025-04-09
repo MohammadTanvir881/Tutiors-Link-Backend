@@ -53,4 +53,5 @@ export type TTeacher = {
   avability: boolean;
   hourlyRate?: number;
   isDeleted: boolean;
+  reviews: { rating: number }[];
 };
