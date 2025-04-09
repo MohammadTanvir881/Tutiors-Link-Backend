@@ -1,3 +1,5 @@
+import { USER_ROLE } from "./user.constants";
+
 export interface TUser {
     id: string;
     email: string;
@@ -6,3 +8,5 @@ export interface TUser {
     status: 'in-progress' | 'blocked';
     isDeleted: boolean;
   }
+
+  export type TUserRole = keyof typeof USER_ROLE
