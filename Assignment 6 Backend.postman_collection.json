@@ -46,7 +46,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"password\": \"12345678\",\n    \"teacher\": {\n        \"name\": \"Md. Rahim Uddin\",\n        \"email\": \"rahim.uddin@example.com\",\n        \"gender\": \"male\",\n        \"dateOfBirth\": \"1985-06-15T00:00:00.000Z\",\n        \"user\": \"661190abf3c8a7b9de2a5e8f\",\n        \"contactNo\": \"01712345678\",\n        \"emergencyContactNo\": \"01898765432\",\n        \"bloodGroup\": \"O+\",\n        \"designation\": \"Senior Lecturer\",\n        \"bio\": \"Passionate physics teacher with over 10 years of experience in guiding students towards academic excellence.\",\n        \"subjects\": [\n            \"Physics\"\n        ],\n        \"presentAddress\": \"House #10, Road #5, Dhanmondi, Dhaka\",\n        \"permanentAddress\": \"Village: Charigram, Upazila: Singair, District: Manikganj\",\n        \"profileImg\": \"https://example.com/images/rahim-profile.jpg\",\n        \"coverImg\": \"https://example.com/images/rahim-cover.jpg\",\n        \"isDeleted\": false\n    }\n}",
+							"raw": "{\n    \"password\": \"12345678\",\n    \"teacher\": {\n        \"name\": \"Karim Uddin\",\n        \"email\": \"teacher2@gmail.com\",\n        \"gender\": \"male\",\n        \"dateOfBirth\": \"1985-06-15T00:00:00.000Z\",\n        \"user\": \"661190abf3c8a7b9de2a5e8f\",\n        \"contactNo\": \"01712345678\",\n        \"emergencyContactNo\": \"01898765432\",\n        \"bloodGroup\": \"O+\",\n        \"designation\": \"Senior Lecturer\",\n        \"bio\": \"Passionate physics teacher with over 10 years of experience in guiding students towards academic excellence.\",\n        \"subjects\": [\n            \"Physics\",\n            \"Mathematics\",\n            \"Higher Mathematics\"\n        ],\n        \"district\": \"dhaka\",\n        \"presentAddress\": \"House #10, Road #5, Dhanmondi, Dhaka\",\n        \"permanentAddress\": \"Village: Charigram, Upazila: Singair, District: Manikganj\",\n        \"profileImg\": \"https://example.com/images/rahim-profile.jpg\",\n        \"coverImg\": \"https://example.com/images/rahim-cover.jpg\",\n        \"isDeleted\": false\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -182,6 +182,14 @@
 					"response": []
 				},
 				{
+					"name": "getSingleTeacher",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
 					"name": "TurnOnAvability",
 					"request": {
 						"method": "PATCH",
@@ -257,6 +265,72 @@
 								"teachers",
 								"hourlyRate",
 								"67f61673ef3318102f15059e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bookings",
+			"item": [
+				{
+					"name": "Create Bookings",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"teacher\": \"642b1f2fa56e3a001c8d2f4a\",\n  \"student\": \"642b1f3fa56e3a001c8d2f4b\",\n  \"days\": [\"Mon\", \"Wed\", \"Fri\"],\n  \"startTime\": \"15:00\",\n  \"endTime\": \"16:30\",\n  \"duration\": 50\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/bookings",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get All Bookings",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"teacher\": \"642b1f2fa56e3a001c8d2f4a\",\n  \"student\": \"642b1f3fa56e3a001c8d2f4b\",\n  \"days\": [\"Mon\", \"Wed\", \"Fri\"],\n  \"startTime\": \"15:00\",\n  \"endTime\": \"16:30\",\n  \"duration\": 50\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/bookings",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"bookings"
 							]
 						}
 					},
