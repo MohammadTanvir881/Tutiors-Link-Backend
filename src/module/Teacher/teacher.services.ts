@@ -1,3 +1,4 @@
+import status from "http-status";
 import AppError from "../../app/Error/AppError";
 import { Teacher } from "./teacher.model";
 
@@ -55,7 +56,7 @@ const getAllTeacherFromDb = async (query: Record<string, undefined>) => {
       );
     });
   }
- 
+
   // Filter by averageRating
   if (query.rating) {
     const ratingFilter = parseFloat(query.rating);
@@ -89,8 +90,10 @@ const getAllTeacherFromDb = async (query: Record<string, undefined>) => {
   if (query.sortBy) {
     if (query.sortBy === "rating") {
       filteredResult.sort((a, b) => {
-        const ratingA = typeof a.averageRating === "number" ? a.averageRating : 0;
-        const ratingB = typeof b.averageRating === "number" ? b.averageRating : 0;
+        const ratingA =
+          typeof a.averageRating === "number" ? a.averageRating : 0;
+        const ratingB =
+          typeof b.averageRating === "number" ? b.averageRating : 0;
         return ratingB - ratingA; // High to low
       });
     } else if (query.sortBy === "lowest") {
@@ -132,15 +135,25 @@ const getSingleTeacherFromDB = async (Id: string) => {
 // update hourly rate
 const updateHourlyRateIntoDb = async (
   Id: string,
-  payload: { hourlyRate: number }
+  payload: { hourlyRate: number },
+  userData: any
 ) => {
-  console.log(payload);
+  // console.log(payload);
+  console.log({ userData });
 
   const teacher = await Teacher.findById(Id);
 
-  console.log(teacher);
+  // console.log(teacher);
   if (!teacher) {
     throw new AppError(404, "Teacher Not Found");
+  }
+
+  const userId = teacher.user;
+  if (!userId.equals(userData.userId)) {
+    throw new AppError(
+      status.BAD_REQUEST,
+      "This is Not Your Profile , You Cant Update This"
+    );
   }
 
   const result = await Teacher.findByIdAndUpdate(
@@ -152,11 +165,19 @@ const updateHourlyRateIntoDb = async (
 };
 
 // turn on availability status
-const turnOnAvabilityStatusIntoDb = async (Id: string) => {
+const turnOnAvabilityStatusIntoDb = async (Id: string, userData: any) => {
   const teacher = await Teacher.findById(Id);
   console.log(teacher);
   if (!teacher) {
     throw new AppError(404, "Teacher Not Found");
+  }
+
+  const userId = teacher.user;
+  if (!userId.equals(userData.userId)) {
+    throw new AppError(
+      status.BAD_REQUEST,
+      "This is Not Your Profile , You Cant Update This"
+    );
   }
 
   const result = await Teacher.findByIdAndUpdate(
@@ -168,11 +189,19 @@ const turnOnAvabilityStatusIntoDb = async (Id: string) => {
 };
 
 // turn off availability status
-const turnOfAvabilityStatusIntoDb = async (Id: string) => {
+const turnOfAvabilityStatusIntoDb = async (Id: string, userData: any) => {
   const teacher = await Teacher.findById(Id);
   console.log(teacher);
   if (!teacher) {
     throw new AppError(404, "Teacher Not Found");
+  }
+
+  const userId = teacher.user;
+  if (!userId.equals(userData.userId)) {
+    throw new AppError(
+      status.BAD_REQUEST,
+      "This is Not Your Profile , You Cant Update This"
+    );
   }
 
   const result = await Teacher.findByIdAndUpdate(

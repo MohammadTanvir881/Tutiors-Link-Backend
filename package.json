@@ -25,6 +25,7 @@
     "jwt-decode": "^4.0.0",
     "mongodb": "^6.12.0",
     "mongoose": "^8.9.2",
+    "nodemailer": "^6.10.0",
     "zod": "^3.24.1"
   },
   "devDependencies": {
@@ -33,6 +34,7 @@
     "@types/express": "^5.0.0",
     "@types/jsonwebtoken": "^9.0.9",
     "@types/node": "^22.10.2",
+    "@types/nodemailer": "^6.4.17",
     "eslint": "^9.14.0",
     "globals": "^15.14.0",
     "ts-node-dev": "^2.0.0",
