@@ -41,6 +41,10 @@ const bookingsSchema = new Schema<TBookings>(
       type: Number,
       required: true,
     },
+    paymentStatus: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,

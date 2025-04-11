@@ -81,7 +81,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\" : \"student1@gmail.com\",\n    \"password\" : \"12345678\"\n}",
+							"raw": "{\n    \"email\": \"student1@gmail.com\",\n    \"password\": \"12345678\"\n}\n\n// {\n//     \"email\": \"teacher1@gmail.com\",\n//     \"password\": \"12345678\"\n// }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -193,7 +193,13 @@
 					"name": "TurnOnAvability",
 					"request": {
 						"method": "PATCH",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzdHVkZW50MUBnbWFpbC5jb20iLCJyb2xlIjoic3R1ZGVudCIsInVzZXJJZCI6IjY3ZjZiY2U5Y2I0NDcwM2YxMTA2ZDAzMyIsImlhdCI6MTc0NDM4MDMyMCwiZXhwIjoxNzQ0OTg1MTIwfQ.CTs7KSQZvsm1aeLs-dsH0b1P9ThdYsX4aAN7g5GsCzk",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:5000/api/teachers/avabilityStatusOn/67f60e8f5bf5402040621753",
 							"protocol": "http",
@@ -215,9 +221,15 @@
 					"name": "TurnOfAvability",
 					"request": {
 						"method": "PATCH",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0ZWFjaGVyMUBnbWFpbC5jb20iLCJyb2xlIjoidGVhY2hlciIsInVzZXJJZCI6IjY3ZjZiY2Y5Y2I0NDcwM2YxMTA2ZDAzNyIsImlhdCI6MTc0NDM4MDU5NSwiZXhwIjoxNzQ0OTg1Mzk1fQ.fNRMcfD_NOX-7f2cXnbBOzdsSQco6CR5e5NDj94UMsA",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:5000/api/teachers/avabilityStatusOn/67f60e8f5bf5402040621753",
+							"raw": "http://localhost:5000/api/teachers/avabilityStatusOf/67f60e8f5bf5402040621753",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -226,8 +238,15 @@
 							"path": [
 								"api",
 								"teachers",
-								"avabilityStatusOn",
+								"avabilityStatusOf",
 								"67f60e8f5bf5402040621753"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -240,7 +259,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzdHVkZW50MUBnbWFpbC5jb20iLCJyb2xlIjoic3R1ZGVudCIsInVzZXJJZCI6IjY3ZjYxZTQ4MzVhZjdlOWM5ZDk0MzFlMCIsImlhdCI6MTc0NDE4MzMzOSwiZXhwIjoxNzQ0Nzg4MTM5fQ.LR8NziuumYSrNXT7W8bQuHQthsRIEULGrwo6RfbyXS0",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzdHVkZW50MUBnbWFpbC5jb20iLCJyb2xlIjoic3R1ZGVudCIsInVzZXJJZCI6IjY3ZjZiY2U5Y2I0NDcwM2YxMTA2ZDAzMyIsImlhdCI6MTc0NDM4MDMyMCwiZXhwIjoxNzQ0OTg1MTIwfQ.CTs7KSQZvsm1aeLs-dsH0b1P9ThdYsX4aAN7g5GsCzk",
 								"type": "text"
 							}
 						],
@@ -254,7 +273,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/teachers/hourlyRate/67f61673ef3318102f15059e",
+							"raw": "http://localhost:5000/api/teachers/hourlyRate/67f6bcf9cb44703f1106d039",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -264,7 +283,7 @@
 								"api",
 								"teachers",
 								"hourlyRate",
-								"67f61673ef3318102f15059e"
+								"67f6bcf9cb44703f1106d039"
 							]
 						}
 					},
@@ -306,6 +325,112 @@
 				},
 				{
 					"name": "get All Bookings",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"teacher\": \"642b1f2fa56e3a001c8d2f4a\",\n  \"student\": \"642b1f3fa56e3a001c8d2f4b\",\n  \"days\": [\"Mon\", \"Wed\", \"Fri\"],\n  \"startTime\": \"15:00\",\n  \"endTime\": \"16:30\",\n  \"duration\": 50\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/bookings",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm Bookings",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0ZWFjaGVyM0BnbWFpbC5jb20iLCJyb2xlIjoidGVhY2hlciIsInVzZXJJZCI6IjY3ZjZiZDhiY2I0NDcwM2YxMTA2ZDAzZiIsImlhdCI6MTc0NDM4Njc5MywiZXhwIjoxNzQ0OTkxNTkzfQ.ZmMsiDGZ8xYfCgzdHJyylJAaKRe8OOHptBwj0jp-xU4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"teacher\": \"642b1f2fa56e3a001c8d2f4a\",\n  \"student\": \"642b1f3fa56e3a001c8d2f4b\",\n  \"days\": [\"Mon\", \"Wed\", \"Fri\"],\n  \"startTime\": \"15:00\",\n  \"endTime\": \"16:30\",\n  \"duration\": 50\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/bookings/confirm/67f929bd2f7c0fd74133aee7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"bookings",
+								"confirm",
+								"67f929bd2f7c0fd74133aee7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Bookings",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0ZWFjaGVyM0BnbWFpbC5jb20iLCJyb2xlIjoidGVhY2hlciIsInVzZXJJZCI6IjY3ZjZiZDhiY2I0NDcwM2YxMTA2ZDAzZiIsImlhdCI6MTc0NDM4Njc5MywiZXhwIjoxNzQ0OTkxNTkzfQ.ZmMsiDGZ8xYfCgzdHJyylJAaKRe8OOHptBwj0jp-xU4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"teacher\": \"642b1f2fa56e3a001c8d2f4a\",\n  \"student\": \"642b1f3fa56e3a001c8d2f4b\",\n  \"days\": [\"Mon\", \"Wed\", \"Fri\"],\n  \"startTime\": \"15:00\",\n  \"endTime\": \"16:30\",\n  \"duration\": 50\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/bookings/cancel/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"bookings",
+								"cancel",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bookings Of A Specific Teacher",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},

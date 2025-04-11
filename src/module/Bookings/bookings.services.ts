@@ -5,6 +5,8 @@ import { Bookings } from "./bookings.model";
 import AppError from "../../app/Error/AppError";
 import status from "http-status";
 import { timeDifference } from "./timeDifference";
+import { sendEmail } from "../../utils/sendEmail";
+import { Student } from "../Student/student.model";
 
 // Create Bookings
 const createBookingsIntoDb = async (payload: TBookings) => {
@@ -66,7 +68,105 @@ const getAllBookingsFromDb = async () => {
   return result;
 };
 
+// Get All Bookings
+const getTheBookingsOfSpecificTeacherFromDb = async (id: string) => {
+  const result = await Bookings.find({ teacher: id });
+  if (result.length === 0) {
+    throw new AppError(status.BAD_GATEWAY, "No Bookings Found");
+  }
+  console.log(result);
+  return result;
+};
+
+// confirmed bookings by a teacher into db
+const confirmedBookingsIntoDb = async (Id: string, userData: any) => {
+  const bookings = await Bookings.findById(Id);
+  if (!bookings) {
+    throw new AppError(404, "Bookings Not Found");
+  }
+
+  const teacher = await Teacher.findById(bookings.teacher);
+  if (!teacher) {
+    throw new AppError(404, "Teacher Not Found");
+  }
+
+  const student = await Student.findById(bookings.student).select("email");
+  console.log("student", student);
+  if (!student) {
+    throw new AppError(404, "Student Not Found");
+  }
+
+  const userId = teacher.user;
+  if (!userId.equals(userData.userId)) {
+    throw new AppError(
+      status.BAD_REQUEST,
+      "This is Not Your Bookings , You Cant Confirm It"
+    );
+  }
+
+  // console.log(bookings);
+  // console.log(teacher);
+  // console.log(userData);
+
+  const result = await Bookings.findByIdAndUpdate(
+    Id,
+    { status: "confirmed" },
+    { new: true, runValidators: true }
+  );
+  sendEmail(
+    student.email,
+    "The Teacher Accepted Your  For Tutoring",
+    `The Teacher ${teacher.name} Accepted Your Request For Tutoring . Go to your dashboard to done Further procedure`
+  );
+  return result;
+};
+
+const cancelBookingsIntoDb = async (Id: string, userData: any) => {
+  const bookings = await Bookings.findById(Id);
+  if (!bookings) {
+    throw new AppError(404, "Bookings Not Found");
+  }
+
+  const teacher = await Teacher.findById(bookings.teacher);
+  if (!teacher) {
+    throw new AppError(404, "Teacher Not Found");
+  }
+
+  const student = await Student.findById(bookings.student).select("email");
+  // console.log("student", student);
+  if (!student) {
+    throw new AppError(404, "Student Not Found");
+  }
+
+  const userId = teacher.user;
+  if (!userId.equals(userData.userId)) {
+    throw new AppError(
+      status.BAD_REQUEST,
+      "This is Not Your Bookings , You Cant Confirm It"
+    );
+  }
+
+  // console.log(bookings);
+  // console.log(teacher);
+  // console.log(userData);
+
+  const result = await Bookings.findByIdAndUpdate(
+    Id,
+    { status: "canceled" },
+    { new: true, runValidators: true }
+  );
+  sendEmail(
+    student.email,
+    "The Teacher Canceled Your  For Tutoring",
+    `The Teacher ${teacher.name} Canceled Your Request For Tutoring`
+  );
+  return result;
+};
+
 export const BookingsServices = {
   createBookingsIntoDb,
   getAllBookingsFromDb,
+  getTheBookingsOfSpecificTeacherFromDb,
+  confirmedBookingsIntoDb,
+  cancelBookingsIntoDb,
 };
