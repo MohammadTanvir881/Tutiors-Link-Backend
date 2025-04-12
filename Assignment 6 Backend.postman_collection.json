@@ -462,6 +462,41 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Payment",
+			"item": [
+				{
+					"name": "create Payment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "// {\n//   \"teacher\": \"67f6bd8bcb44703f1106d041\",\n//   \"student\": \"67f6bce9cb44703f1106d035\",\n//   \"days\": [\"Wed\", \"Mon\"],\n//   \"startTime\": \"17:00\",\n//   \"endTime\": \"18:00\",\n//   \"duration\": 15\n// }\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/payment/67f929bd2f7c0fd74133aee7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"payment",
+								"67f929bd2f7c0fd74133aee7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

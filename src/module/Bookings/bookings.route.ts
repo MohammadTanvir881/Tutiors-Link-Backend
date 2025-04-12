@@ -26,6 +26,6 @@ router.patch(
   BookingsController.confirmBookings
 );
 // Cancel Bookings By A Teacher
-router.patch("/cancel/:id", auth("teacher"), BookingsController.cancelBookings);
+router.patch("/cancle/:id", auth("teacher"), BookingsController.cancelBookings);
 
 export const BookingRoutes = router;
