@@ -81,7 +81,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"student1@gmail.com\",\n    \"password\": \"12345678\"\n}\n\n// {\n//     \"email\": \"teacher1@gmail.com\",\n//     \"password\": \"12345678\"\n// }",
+							"raw": "{\n    \"email\": \"mohammadtanvir881@gmail.com\",\n    \"password\": \"12345678\"\n}\n\n// {\n//     \"email\": \"teacher4@gmail.com\",\n//     \"password\": \"12345678\"\n// }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -186,6 +186,42 @@
 					"request": {
 						"method": "GET",
 						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "update teacher",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0ZWFjaGVyNUBnbWFpbC5jb20iLCJyb2xlIjoidGVhY2hlciIsInVzZXJJZCI6IjY3ZjZjN2I3ZmIyMWRhODdjMGYwNjIwMiIsImlhdCI6MTc0NDQ2NzE1MSwiZXhwIjoxNzQ1MDcxOTUxfQ.I7FexQZ7VRIQ9RnAx6U75KfDATpTcO8HD3wHo0Zy-4g",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Asim Khay\",\n    \"gender\": \"female\",\n    \"dateOfBirth\": \"1985-06-15\",\n    \"contactNo\": \"01712345678\",\n    \"emergencyContactNo\": \"01898765432\",\n    \"bloodGroup\": \"A+\",\n    \"designation\": \"Senior Lecturer\",\n    \"bio\": \"Passionate physics teacher with over 10 years of experience in guiding students towards academic excellence.\",\n    \"subjects\": [\n        \"Physics\",\n        \"Mathematics\"\n    ],\n    \"district\": \"feni\",\n    \"presentAddress\": \"House #10, Road #5, Dhanmondi, Dhaka\",\n    \"permanentAddress\": \"Village: Charigram, Upazila: Singair, District: Manikganj\",\n    \"profileImg\": \"https://example.com/images/rahim-profile.jpg\",\n    \"coverImg\": \"https://example.com/images/rahim-cover.jpg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/teachers/67f6c7b8fb21da87c0f06204",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"teachers",
+								"67f6c7b8fb21da87c0f06204"
+							]
+						}
 					},
 					"response": []
 				},
@@ -362,7 +398,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0ZWFjaGVyM0BnbWFpbC5jb20iLCJyb2xlIjoidGVhY2hlciIsInVzZXJJZCI6IjY3ZjZiZDhiY2I0NDcwM2YxMTA2ZDAzZiIsImlhdCI6MTc0NDM4Njc5MywiZXhwIjoxNzQ0OTkxNTkzfQ.ZmMsiDGZ8xYfCgzdHJyylJAaKRe8OOHptBwj0jp-xU4",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0ZWFjaGVyMUBnbWFpbC5jb20iLCJyb2xlIjoidGVhY2hlciIsInVzZXJJZCI6IjY3ZjZiY2Y5Y2I0NDcwM2YxMTA2ZDAzNyIsImlhdCI6MTc0NDQ3MDY3NiwiZXhwIjoxNzQ1MDc1NDc2fQ.ye9wj74UpOXKiP_2QpwTUb1K-ZqzJOTzez2qWBAysc4",
 								"type": "text"
 							}
 						],
@@ -376,7 +412,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/bookings/confirm/67f929bd2f7c0fd74133aee7",
+							"raw": "http://localhost:5000/api/bookings/confirm/67fa81a4c8334d441b2b3d0a",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -386,7 +422,7 @@
 								"api",
 								"bookings",
 								"confirm",
-								"67f929bd2f7c0fd74133aee7"
+								"67fa81a4c8334d441b2b3d0a"
 							]
 						}
 					},
@@ -493,6 +529,84 @@
 								"67f929bd2f7c0fd74133aee7"
 							]
 						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Student",
+			"item": [
+				{
+					"name": "get all students",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get single student",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Student",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"students"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Earnings",
+			"item": [
+				{
+					"name": "Get Total Earnings",
+					"request": {
+						"method": "GET",
+						"header": []
 					},
 					"response": []
 				}
