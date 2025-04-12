@@ -1,6 +1,7 @@
 import status from "http-status";
 import AppError from "../../app/Error/AppError";
 import { Teacher } from "./teacher.model";
+import { TTeacher } from "./teacher.interface";
 
 // get All Teacher
 const getAllTeacherFromDb = async (query: Record<string, undefined>) => {
@@ -132,6 +133,34 @@ const getSingleTeacherFromDB = async (Id: string) => {
   };
 };
 
+// update teacher into db
+const updateTeacherIntoDb = async (
+  id: string,
+  payload: Partial<TTeacher>,
+  userData: any
+) => {
+  // console.log(id);
+  // console.log(userData);
+  const teacher = await Teacher.findById(id);
+  console.log(teacher);
+  if (!teacher) {
+    throw new AppError(status.NOT_FOUND, "Teacher Not Found");
+  }
+
+  const userId = teacher.user;
+  if (!userId.equals(userData.userId)) {
+    throw new AppError(
+      status.BAD_REQUEST,
+      "This is Not Your Profile , You Cant Update This"
+    );
+  }
+  const result = await Teacher.findByIdAndUpdate(id, payload, {
+    new: true,
+    runValidators: true,
+  });
+  return result;
+};
+
 // update hourly rate
 const updateHourlyRateIntoDb = async (
   Id: string,
@@ -218,4 +247,5 @@ export const TeacherServices = {
   turnOnAvabilityStatusIntoDb,
   turnOfAvabilityStatusIntoDb,
   updateHourlyRateIntoDb,
+  updateTeacherIntoDb,
 };

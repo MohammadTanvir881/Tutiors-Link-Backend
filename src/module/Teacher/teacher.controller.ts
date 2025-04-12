@@ -39,12 +39,35 @@ const getAllTeacher = catchAsync(async (req, res) => {
   });
 });
 
+//update Teacher
+const UpdateTeacher = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  // console.log("update teacher", req.body);
+
+  const result = await TeacherServices.updateTeacherIntoDb(
+    id,
+    req.body,
+    req.user
+  );
+
+  sendResponse(res, {
+    statusCode: status.OK,
+    success: true,
+    message: "Teacher is Updated succesfully",
+    data: result,
+  });
+});
+
 // update hourly rate
 const updateHourlyRate = catchAsync(async (req, res) => {
   const { id } = req.params;
   // console.log("user " , req.user)
 
-  const result = await TeacherServices.updateHourlyRateIntoDb(id, req.body , req.user);
+  const result = await TeacherServices.updateHourlyRateIntoDb(
+    id,
+    req.body,
+    req.user
+  );
 
   sendResponse(res, {
     statusCode: status.OK,
@@ -57,7 +80,10 @@ const updateHourlyRate = catchAsync(async (req, res) => {
 // turn on availability status
 const turnOnAvabilityStatus = catchAsync(async (req, res) => {
   const { id } = req.params;
-  const result = await TeacherServices.turnOnAvabilityStatusIntoDb(id , req.user);
+  const result = await TeacherServices.turnOnAvabilityStatusIntoDb(
+    id,
+    req.user
+  );
 
   sendResponse(res, {
     statusCode: status.OK,
@@ -70,7 +96,10 @@ const turnOnAvabilityStatus = catchAsync(async (req, res) => {
 // turn off availability status
 const turnOfAvabilityStatus = catchAsync(async (req, res) => {
   const { id } = req.params;
-  const result = await TeacherServices.turnOfAvabilityStatusIntoDb(id , req.user);
+  const result = await TeacherServices.turnOfAvabilityStatusIntoDb(
+    id,
+    req.user
+  );
 
   sendResponse(res, {
     statusCode: status.OK,
@@ -86,4 +115,5 @@ export const TeacherControllers = {
   turnOnAvabilityStatus,
   turnOfAvabilityStatus,
   updateHourlyRate,
+  UpdateTeacher,
 };
