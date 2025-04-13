@@ -56,6 +56,20 @@ const teacherSchema = new Schema<TTeacher>(
       type: String,
       required: [true, "Bio is required"],
     },
+    grade: {
+      type: [String],
+      enum: {
+        values: [
+          "Preschool",
+          "Kindergarten",
+          "Elementary School",
+          "Middle School",
+          "High School",
+          "College",
+        ],
+        message: "{VALUE} is not a valid subject",
+      },
+    },
     subjects: {
       type: [String],
       enum: {

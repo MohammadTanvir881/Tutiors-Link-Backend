@@ -81,6 +81,17 @@ const createTeacherValidationSchema = z.object({
       ]),
       designation: z.string().min(1, "Designation is required"),
       bio: z.string().min(1, "Bio is required"),
+
+      grade: z.array(
+        z.enum([
+          "Preschool",
+          "Kindergarten",
+          "Elementary School",
+          "Middle School",
+          "High School",
+          "College",
+        ])
+      ),
       subjects: z
         .array(
           z.enum([
@@ -202,6 +213,16 @@ const updateTeacherValidationSchema = z.object({
       .optional(),
     designation: z.string().min(1, "Designation is required").optional(),
     bio: z.string().min(1, "Bio is required").optional(),
+    grade: z.array(
+      z.enum([
+        "Preschool",
+        "Kindergarten",
+        "Elementary School",
+        "Middle School",
+        "High School",
+        "College",
+      ])
+    ),
     subjects: z
       .array(
         z.enum([

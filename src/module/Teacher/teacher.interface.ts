@@ -1,5 +1,11 @@
 import { Types } from "mongoose";
-import { TBloodGroup, TDistrict, TGender, TSubject } from "./teacher.types";
+import {
+  TBloodGroup,
+  TDistrict,
+  TGender,
+  TGrade,
+  TSubject,
+} from "./teacher.types";
 
 export type TTeacher = {
   name: string;
@@ -12,6 +18,7 @@ export type TTeacher = {
   bloodGroup?: TBloodGroup;
   designation: string;
   bio: string;
+  grade: TGrade[];
   subjects: TSubject[];
   district: TDistrict;
   presentAddress: string;
