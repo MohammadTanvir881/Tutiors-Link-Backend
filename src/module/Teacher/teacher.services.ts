@@ -58,6 +58,19 @@ const getAllTeacherFromDb = async (query: Record<string, undefined>) => {
     });
   }
 
+  // Filter by grade
+  if (query.grade) {
+    filteredResult = filteredResult.filter((teacher) => {
+      const value = teacher.grade;
+      return (
+        Array.isArray(value) &&
+        value.some(
+          (grade) => query.grade && new RegExp(query.grade, "i").test(grade)
+        )
+      );
+    });
+  }
+
   // Filter by averageRating
   if (query.rating) {
     const ratingFilter = parseFloat(query.rating);

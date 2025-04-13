@@ -75,6 +75,14 @@ export type TBloodGroup =
   | "O+"
   | "O-";
 
+export type TGrade =
+  | "Preschool"
+  | "Kindergarten"
+  | "Elementary School"
+  | "Middle School"
+  | "High School"
+  | "College";
+
 export type TSubject =
   // Class 11-12 (HSC - Intermediate level)
   | "Physics"
