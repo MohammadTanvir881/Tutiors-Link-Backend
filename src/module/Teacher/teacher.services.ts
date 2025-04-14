@@ -58,6 +58,16 @@ const getAllTeacherFromDb = async (query: Record<string, undefined>) => {
     });
   }
 
+  // Filter by name
+  if (query.name) {
+    filteredResult = filteredResult.filter((teacher) => {
+      return (
+        typeof teacher.name === "string" &&
+        query.name && new RegExp(query.name, "i").test(teacher.name)
+      );
+    });
+  }
+
   // Filter by grade
   if (query.grade) {
     filteredResult = filteredResult.filter((teacher) => {
