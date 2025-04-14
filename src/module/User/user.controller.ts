@@ -7,7 +7,6 @@ import { UserServices } from "./user.services";
 //! Creating Student
 
 const createStudent = catchAsync(async (req, res) => {
-  console.log(req.body);
   const { password, student: studentData } = req.body;
 
   const result = await UserServices.createStudentIntoDB(password, studentData);
@@ -15,7 +14,7 @@ const createStudent = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: status.OK,
     success: true,
-    message: "Student is created succesfully",
+    message: "Student is created successfully",
     data: result,
   });
 });
@@ -34,7 +33,7 @@ const createTeacher = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: status.OK,
     success: true,
-    message: "Teacher is created succesfully",
+    message: "Teacher is created successfully",
     data: result,
   });
 });
