@@ -81,7 +81,7 @@ const createTeacherIntoDB = async (password: string, payload: TTeacher) => {
     if (!newUser.length) {
       throw new AppError(status.BAD_REQUEST, "Failed to create user");
     }
-    payload.user = newUser[0]._id; //reference _id
+    payload.user = newUser[0]._id; //reference _id for teacher
     // create a student (transaction-2)
     const newTeacher = await Teacher.create([payload], { session });
 

@@ -1,0 +1,616 @@
+{
+	"info": {
+		"_postman_id": "f9a99c68-212e-478a-a24b-83b3b4deb155",
+		"name": "Assignment 6 Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39749761"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Create Student",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"12345678\",\n    \"student\": {\n        \"name\": \"John Doe\",\n        \"email\": \"student1@gmail.com\",\n        \"gender\": \"male\",\n        \"dateOfBirth\": \"2000-05-15T00:00:00.000Z\",\n        \"contactNo\": \"01712345678\",\n        \"emergencyContactNo\": \"01812345678\",\n        \"bloodGroup\": \"A+\",\n        \"presentAddress\": \"123 Main Street, Dhaka\",\n        \"permanentAddress\": \"456 Village Road, Khulna\",\n        \"profileImg\": \"https://example.com/images/profile.jpg\",\n        \"coverImg\": \"https://example.com/images/cover.jpg\",\n        \"isDeleted\": false\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/users/create-student",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"users",
+								"create-student"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create teacher",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"12345678\",\n    \"teacher\": {\n        \"name\": \"Karim Uddin\",\n        \"email\": \"teacher2@gmail.com\",\n        \"gender\": \"male\",\n        \"dateOfBirth\": \"1985-06-15T00:00:00.000Z\",\n        \"user\": \"661190abf3c8a7b9de2a5e8f\",\n        \"contactNo\": \"01712345678\",\n        \"emergencyContactNo\": \"01898765432\",\n        \"bloodGroup\": \"O+\",\n        \"designation\": \"Senior Lecturer\",\n        \"bio\": \"Passionate physics teacher with over 10 years of experience in guiding students towards academic excellence.\",\n        \"subjects\": [\n            \"Physics\",\n            \"Mathematics\",\n            \"Higher Mathematics\"\n        ],\n        \"district\": \"dhaka\",\n        \"presentAddress\": \"House #10, Road #5, Dhanmondi, Dhaka\",\n        \"permanentAddress\": \"Village: Charigram, Upazila: Singair, District: Manikganj\",\n        \"profileImg\": \"https://example.com/images/rahim-profile.jpg\",\n        \"coverImg\": \"https://example.com/images/rahim-cover.jpg\",\n        \"isDeleted\": false\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/users/create-teacher",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"users",
+								"create-teacher"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"mohammadtanvir881@gmail.com\",\n    \"password\": \"12345678\"\n}\n\n// {\n//     \"email\": \"teacher4@gmail.com\",\n//     \"password\": \"12345678\"\n// }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" : \"student1@gmail.com\",\n    \"password\" : \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reviews",
+			"item": [
+				{
+					"name": "create review",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"teacher\": \"67f2c0e471efcda488910b81\",\n  \"student\": \"67f37943618d6d0c53e3a1f6\",\n  \"comment\": \"Great tutor! 2nd reviews\",\n  \"rating\": 5,\n  \"review\": \"He explained quantum mechanics in a really simple way. Very impressive.\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/reviews",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Teachers",
+			"item": [
+				{
+					"name": "getAllTeachers",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "getSingleTeacher",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "update teacher",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0ZWFjaGVyNUBnbWFpbC5jb20iLCJyb2xlIjoidGVhY2hlciIsInVzZXJJZCI6IjY3ZjZjN2I3ZmIyMWRhODdjMGYwNjIwMiIsImlhdCI6MTc0NDQ2NzE1MSwiZXhwIjoxNzQ1MDcxOTUxfQ.I7FexQZ7VRIQ9RnAx6U75KfDATpTcO8HD3wHo0Zy-4g",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Asim Khay\",\n    \"gender\": \"female\",\n    \"dateOfBirth\": \"1985-06-15\",\n    \"contactNo\": \"01712345678\",\n    \"emergencyContactNo\": \"01898765432\",\n    \"bloodGroup\": \"A+\",\n    \"designation\": \"Senior Lecturer\",\n    \"bio\": \"Passionate physics teacher with over 10 years of experience in guiding students towards academic excellence.\",\n    \"subjects\": [\n        \"Physics\",\n        \"Mathematics\"\n    ],\n    \"district\": \"feni\",\n    \"presentAddress\": \"House #10, Road #5, Dhanmondi, Dhaka\",\n    \"permanentAddress\": \"Village: Charigram, Upazila: Singair, District: Manikganj\",\n    \"profileImg\": \"https://example.com/images/rahim-profile.jpg\",\n    \"coverImg\": \"https://example.com/images/rahim-cover.jpg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/teachers/67f6c7b8fb21da87c0f06204",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"teachers",
+								"67f6c7b8fb21da87c0f06204"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TurnOnAvability",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzdHVkZW50MUBnbWFpbC5jb20iLCJyb2xlIjoic3R1ZGVudCIsInVzZXJJZCI6IjY3ZjZiY2U5Y2I0NDcwM2YxMTA2ZDAzMyIsImlhdCI6MTc0NDM4MDMyMCwiZXhwIjoxNzQ0OTg1MTIwfQ.CTs7KSQZvsm1aeLs-dsH0b1P9ThdYsX4aAN7g5GsCzk",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/teachers/avabilityStatusOn/67f60e8f5bf5402040621753",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"teachers",
+								"avabilityStatusOn",
+								"67f60e8f5bf5402040621753"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TurnOfAvability",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0ZWFjaGVyMUBnbWFpbC5jb20iLCJyb2xlIjoidGVhY2hlciIsInVzZXJJZCI6IjY3ZjZiY2Y5Y2I0NDcwM2YxMTA2ZDAzNyIsImlhdCI6MTc0NDM4MDU5NSwiZXhwIjoxNzQ0OTg1Mzk1fQ.fNRMcfD_NOX-7f2cXnbBOzdsSQco6CR5e5NDj94UMsA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/teachers/avabilityStatusOf/67f60e8f5bf5402040621753",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"teachers",
+								"avabilityStatusOf",
+								"67f60e8f5bf5402040621753"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Hourly Rate",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzdHVkZW50MUBnbWFpbC5jb20iLCJyb2xlIjoic3R1ZGVudCIsInVzZXJJZCI6IjY3ZjZiY2U5Y2I0NDcwM2YxMTA2ZDAzMyIsImlhdCI6MTc0NDM4MDMyMCwiZXhwIjoxNzQ0OTg1MTIwfQ.CTs7KSQZvsm1aeLs-dsH0b1P9ThdYsX4aAN7g5GsCzk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"hourlyRate\": 250\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/teachers/hourlyRate/67f6bcf9cb44703f1106d039",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"teachers",
+								"hourlyRate",
+								"67f6bcf9cb44703f1106d039"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bookings",
+			"item": [
+				{
+					"name": "Create Bookings",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"teacher\": \"642b1f2fa56e3a001c8d2f4a\",\n  \"student\": \"642b1f3fa56e3a001c8d2f4b\",\n  \"days\": [\"Mon\", \"Wed\", \"Fri\"],\n  \"startTime\": \"15:00\",\n  \"endTime\": \"16:30\",\n  \"duration\": 50\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/bookings",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get All Bookings",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"teacher\": \"642b1f2fa56e3a001c8d2f4a\",\n  \"student\": \"642b1f3fa56e3a001c8d2f4b\",\n  \"days\": [\"Mon\", \"Wed\", \"Fri\"],\n  \"startTime\": \"15:00\",\n  \"endTime\": \"16:30\",\n  \"duration\": 50\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/bookings",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm Bookings",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0ZWFjaGVyMUBnbWFpbC5jb20iLCJyb2xlIjoidGVhY2hlciIsInVzZXJJZCI6IjY3ZjZiY2Y5Y2I0NDcwM2YxMTA2ZDAzNyIsImlhdCI6MTc0NDQ3MDY3NiwiZXhwIjoxNzQ1MDc1NDc2fQ.ye9wj74UpOXKiP_2QpwTUb1K-ZqzJOTzez2qWBAysc4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"teacher\": \"642b1f2fa56e3a001c8d2f4a\",\n  \"student\": \"642b1f3fa56e3a001c8d2f4b\",\n  \"days\": [\"Mon\", \"Wed\", \"Fri\"],\n  \"startTime\": \"15:00\",\n  \"endTime\": \"16:30\",\n  \"duration\": 50\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/bookings/confirm/67fa81a4c8334d441b2b3d0a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"bookings",
+								"confirm",
+								"67fa81a4c8334d441b2b3d0a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Bookings",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0ZWFjaGVyM0BnbWFpbC5jb20iLCJyb2xlIjoidGVhY2hlciIsInVzZXJJZCI6IjY3ZjZiZDhiY2I0NDcwM2YxMTA2ZDAzZiIsImlhdCI6MTc0NDM4Njc5MywiZXhwIjoxNzQ0OTkxNTkzfQ.ZmMsiDGZ8xYfCgzdHJyylJAaKRe8OOHptBwj0jp-xU4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"teacher\": \"642b1f2fa56e3a001c8d2f4a\",\n  \"student\": \"642b1f3fa56e3a001c8d2f4b\",\n  \"days\": [\"Mon\", \"Wed\", \"Fri\"],\n  \"startTime\": \"15:00\",\n  \"endTime\": \"16:30\",\n  \"duration\": 50\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/bookings/cancel/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"bookings",
+								"cancel",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bookings Of A Specific Teacher",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"teacher\": \"642b1f2fa56e3a001c8d2f4a\",\n  \"student\": \"642b1f3fa56e3a001c8d2f4b\",\n  \"days\": [\"Mon\", \"Wed\", \"Fri\"],\n  \"startTime\": \"15:00\",\n  \"endTime\": \"16:30\",\n  \"duration\": 50\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/bookings",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payment",
+			"item": [
+				{
+					"name": "create Payment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "// {\n//   \"teacher\": \"67f6bd8bcb44703f1106d041\",\n//   \"student\": \"67f6bce9cb44703f1106d035\",\n//   \"days\": [\"Wed\", \"Mon\"],\n//   \"startTime\": \"17:00\",\n//   \"endTime\": \"18:00\",\n//   \"duration\": 15\n// }\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/payment/67f929bd2f7c0fd74133aee7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"payment",
+								"67f929bd2f7c0fd74133aee7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Student",
+			"item": [
+				{
+					"name": "get all students",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get single student",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Student",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"students"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Earnings",
+			"item": [
+				{
+					"name": "Get Total Earnings",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,38 +1,11 @@
 import { Types } from "mongoose";
-
-export type TGender = "male" | "female" | "other";
-export type TBloodGroup =
-  | "A+"
-  | "A-"
-  | "B+"
-  | "B-"
-  | "AB+"
-  | "AB-"
-  | "O+"
-  | "O-";
-
-export type TSubject =
-  // Class 11-12 (HSC - Intermediate level)
-  | "Physics"
-  | "Mathematics"
-  | "Higher Mathematics"
-  | "Chemistry"
-  | "Biology"
-  | "Statistics"
-  | "Logic"
-  | "Sociology"
-  | "Psychology"
-  | "Islamic History"
-  | "Islamic Studies"
-  | "Computer Science"
-  | "Bangla 1st Paper (HSC)"
-  | "Bangla 2nd Paper (HSC)"
-  | "English 1st Paper (HSC)"
-  | "English 2nd Paper (HSC)"
-  | "Accounting (HSC)"
-  | "Management"
-  | "Marketing"
-  | "Finance, Banking & Insurance";
+import {
+  TBloodGroup,
+  TDistrict,
+  TGender,
+  TGrade,
+  TSubject,
+} from "./teacher.types";
 
 export type TTeacher = {
   name: string;
@@ -45,10 +18,16 @@ export type TTeacher = {
   bloodGroup?: TBloodGroup;
   designation: string;
   bio: string;
+  grade: TGrade[];
   subjects: TSubject[];
+  district: TDistrict;
   presentAddress: string;
   permanentAddress: string;
   profileImg?: string;
   coverImg?: string;
+  availability: boolean;
+  hourlyRate?: number;
   isDeleted: boolean;
+  reviews: { rating: number }[];
+  createdAt: Date;
 };
