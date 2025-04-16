@@ -14,23 +14,35 @@ const bookingsSchema = new Schema<TBookings>(
       ref: "Student",
       required: true,
     },
-    days: {
-      type: [String],
-      enum: Days,
-      required: true,
-    },
-    startTime: {
+    date: {
       type: String,
       required: true,
     },
-    endTime: {
+    timeSlot: {
       type: String,
       required: true,
     },
+    subject: {
+      type: String,
+      required: true,
+    },
+    // days: {
+    //   type: [String],
+    //   enum: Days,
+    //   required: true,
+    // },
+    // startTime: {
+    //   type: String,
+    //   required: true,
+    // },
+    // endTime: {
+    //   type: String,
+    //   required: true,
+    // },
     price: {
       type: Number,
-      default: 0,
       min: 0,
+      required: true,
     },
     status: {
       type: String,

@@ -5,10 +5,13 @@ export type Tpayment = {
   bookingsId: Types.ObjectId;
   teacher: Types.ObjectId;
   student: Types.ObjectId;
-  days: TDays[];
-  startTime: string;
-  endTime: string;
-  price?: number;
+  date: string;
+  timeSlot: string;
+  subject: string;
+  // days: TDays[];
+  // startTime: string;
+  // endTime: string;
+  price: number;
   status: "pending" | "confirmed" | "completed" | "canceled";
   duration: number;
   paymentStatus: boolean;
