@@ -28,7 +28,7 @@ const createPayment = catchAsync(async (req, res) => {
     tran_id: transId, // use unique tran_id for each api call
     success_url: `http://localhost:5000/api/payment/success/${transId}`,
     fail_url: `http://localhost:5000/api/payment/fail/${transId}`,
-    cancel_url: "http://localhost:3030/cancel",
+    cancel_url: `http://localhost:5000/api/payment/success/${transId}`,
     ipn_url: "http://localhost:3030/ipn",
     shipping_method: "Courier",
     product_name: "Computer.",
