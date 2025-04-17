@@ -55,7 +55,7 @@ const paymentSchema = new Schema<Tpayment>(
       default: "pending",
     },
     duration: {
-      type: Number,
+      type: String,
       required: true,
     },
     paymentStatus: {
