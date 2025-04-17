@@ -19,7 +19,7 @@ router.get("/", BookingsController.getAllBookingsFromDb);
 // Get The Bookings Of A Specific Teacher
 router.get("/teacher/:id", BookingsController.getTheBookingsOfSpecificTeacher);
 
-// Get The Bookings Of A Specific Teacher
+// Get The Bookings Of A Specific Student
 router.get("/student/:id", BookingsController.getTheBookingsOfSpecificStudent);
 
 // Confirmed Bookings By A Teacher
