@@ -10,7 +10,9 @@ const router = express.Router();
 router.get("/", StudentController.getAllStudentFromDB);
 // get single student
 router.get("/:id", StudentController.getSingleStudentFromDB);
-// update student data
+// // get single student by userId
+// router.get("/studentUserId/:id", StudentController.getSingleStudentFromDB);
+// // update student data
 router.patch(
   "/:id",
   auth("student"),

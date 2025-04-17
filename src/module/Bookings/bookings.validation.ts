@@ -51,9 +51,7 @@ const createOfferedCourseValidationSchema = z.object({
     timeSlot: z.string(),
     subject: z.string(),
 
-    duration: z.number().min(1, {
-      message: "Duration should be greater than 0",
-    }),
+    duration: z.string(),
   }),
 });
 

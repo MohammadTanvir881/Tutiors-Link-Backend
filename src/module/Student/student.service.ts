@@ -5,7 +5,7 @@ import AppError from "../../app/Error/AppError";
 
 // get all student data
 const getAllStudent = async () => {
-  const students = await Student.find().populate("user");
+  const students = await Student.find();
   return students;
 };
 
@@ -14,7 +14,11 @@ const getSingleStudent = async (id: string) => {
   const student = await Student.findById(id).populate("user");
   return student;
 };
-
+// get single student by Student User Id
+// const getSingleStudentByStudentUSerId = async (id: string) => {
+//   const student = await Student.find({});
+//   return student;
+// };
 // update student into db
 const updateStudentDataIntoDb = async (
   id: string,

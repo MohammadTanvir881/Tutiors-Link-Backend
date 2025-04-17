@@ -50,7 +50,7 @@ const bookingsSchema = new Schema<TBookings>(
       default: "pending",
     },
     duration: {
-      type: Number,
+      type: String,
       required: true,
     },
     paymentStatus: {

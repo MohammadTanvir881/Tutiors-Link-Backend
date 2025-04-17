@@ -12,6 +12,6 @@ export type TBookings = {
   // endTime: string;
   price: number;
   status: "pending" | "confirmed" | "completed" | "canceled";
-  duration: number;
+  duration: string;
   paymentStatus?: boolean;
 };

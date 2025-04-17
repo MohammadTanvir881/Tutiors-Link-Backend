@@ -13,5 +13,5 @@ export type TStudent = {
   permanentAddress: string;
   profileImg?: string;
   coverImg?: string;
-  isDeleted: boolean;
+  isDeleted?: boolean;
 };
