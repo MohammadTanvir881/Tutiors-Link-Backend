@@ -68,9 +68,19 @@ const getAllBookingsFromDb = async () => {
   return result;
 };
 
-// Get All Bookings
+// Get the Bookings of a specfic teacher
 const getTheBookingsOfSpecificTeacherFromDb = async (id: string) => {
   const result = await Bookings.find({ teacher: id });
+  if (result.length === 0) {
+    throw new AppError(status.BAD_GATEWAY, "No Bookings Found");
+  }
+  console.log(result);
+  return result;
+};
+
+// Get the Bookings of a specfic teacher
+const getTheBookingsOfSpecificStudentFromDb = async (id: string) => {
+  const result = await Bookings.find({ student: id });
   if (result.length === 0) {
     throw new AppError(status.BAD_GATEWAY, "No Bookings Found");
   }
@@ -167,6 +177,7 @@ export const BookingsServices = {
   createBookingsIntoDb,
   getAllBookingsFromDb,
   getTheBookingsOfSpecificTeacherFromDb,
+  getTheBookingsOfSpecificStudentFromDb,
   confirmedBookingsIntoDb,
   cancelBookingsIntoDb,
 };
