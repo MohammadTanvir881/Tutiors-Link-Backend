@@ -27,7 +27,23 @@ const getAllBookingsFromDb = catchAsync(async (req, res) => {
 // get the bookings of specific teacher
 const getTheBookingsOfSpecificTeacher = catchAsync(async (req, res) => {
   const { id } = req.params;
-  const result = await BookingsServices.getTheBookingsOfSpecificTeacherFromDb(id);
+  const result = await BookingsServices.getTheBookingsOfSpecificTeacherFromDb(
+    id
+  );
+  sendResponse(res, {
+    statusCode: status.OK,
+    success: true,
+    message: "Bookings Retreived successfully",
+    data: result,
+  });
+});
+
+// get the bookings of specific Student
+const getTheBookingsOfSpecificStudent = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const result = await BookingsServices.getTheBookingsOfSpecificStudentFromDb(
+    id
+  );
   sendResponse(res, {
     statusCode: status.OK,
     success: true,
@@ -39,7 +55,7 @@ const getTheBookingsOfSpecificTeacher = catchAsync(async (req, res) => {
 // Confirm Bookings by a teacher
 const confirmBookings = catchAsync(async (req, res) => {
   const { id } = req.params;
-  const result = await BookingsServices.confirmedBookingsIntoDb(id , req.user);
+  const result = await BookingsServices.confirmedBookingsIntoDb(id, req.user);
   sendResponse(res, {
     statusCode: status.OK,
     success: true,
@@ -50,7 +66,7 @@ const confirmBookings = catchAsync(async (req, res) => {
 
 const cancelBookings = catchAsync(async (req, res) => {
   const { id } = req.params;
-  const result = await BookingsServices.cancelBookingsIntoDb(id , req.user);
+  const result = await BookingsServices.cancelBookingsIntoDb(id, req.user);
   sendResponse(res, {
     statusCode: status.OK,
     success: true,
@@ -63,6 +79,7 @@ export const BookingsController = {
   createBookingsIntoDb,
   getAllBookingsFromDb,
   getTheBookingsOfSpecificTeacher,
+  getTheBookingsOfSpecificStudent,
   confirmBookings,
-  cancelBookings
+  cancelBookings,
 };
