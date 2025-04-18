@@ -9,6 +9,7 @@ import SSLCommerzPayment from "sslcommerz-lts";
 import app from "../../app";
 import { Payment } from "./payment.model";
 import { PaymentServices } from "./payment.services";
+import sendResponse from "../../utils/sendResponse";
 
 const store_id = process.env.SSLCOMMERZ_STORE_ID;
 const store_passwd = process.env.SSLCOMMERZ_STORE_PASSWORD;
@@ -121,8 +122,22 @@ const paymentFail = catchAsync(async (req, res) => {
   // res.status(200).json({ message: "Payment Fail", transId });
 });
 
+// Schedule of a specific teacher
+const scheduleOfSpecificTeacher = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const result = await PaymentServices.getTheScheduleOfSpecificTeacher(id);
+
+  sendResponse(res, {
+    statusCode: status.OK,
+    success: true,
+    message: "Schedule Retreived Successfully",
+    data: result,
+  });
+});
+
 export const PaymentControllers = {
   createPayment,
   paymentSuccess,
   paymentFail,
+  scheduleOfSpecificTeacher,
 };

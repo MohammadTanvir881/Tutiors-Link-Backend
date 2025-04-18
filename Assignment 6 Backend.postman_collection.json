@@ -373,6 +373,34 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Schedule of A specific teacher",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0ZWFjaGVyMUBnbWFpbC5jb20iLCJyb2xlIjoidGVhY2hlciIsInVzZXJJZCI6IjY4MDBkYzM3NzA1MzExMWM3YjMyZWVhZiIsImlhdCI6MTc0NDk2ODU2OSwiZXhwIjoxNzQ1NTczMzY5fQ.1Oe4SKE_LEi-b_Rlh32XaTtM2ZT0tDoxO_q2z5Mz_q0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/payment/schedule/6800dc387053111c7b32eeb1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"payment",
+								"schedule",
+								"6800dc387053111c7b32eeb1"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
