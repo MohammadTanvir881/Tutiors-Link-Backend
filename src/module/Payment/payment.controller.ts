@@ -79,10 +79,10 @@ const createPayment = catchAsync(async (req, res) => {
           paymentStatus: bookings.paymentStatus,
           transId,
         };
-        console.log(finalOrder);
+        // console.log(finalOrder);
 
         const result = await PaymentServices.paymentIntoDb(finalOrder);
-        console.log("result", result);
+        // console.log("result", result);
         console.log("Redirecting to: ", GatewayPageURL);
       } catch (err) {
         console.error("Error inside SSLCommerz response handler:", err);
@@ -98,16 +98,37 @@ const createPayment = catchAsync(async (req, res) => {
 
 const paymentSuccess = catchAsync(async (req, res) => {
   const { transId } = req.params;
+
+  // Find the payment entry
+  const payment = await Payment.findOne({ transId });
+
+  if (!payment) {
+    res.status(404).json({ message: "Payment record not found" });
+    return;
+  }
+
+  // Update booking status
+  const bookingId = payment.bookingsId;
+  await Bookings.findByIdAndUpdate(
+    bookingId,
+    { status: "completed" },
+    { new: true }
+  );
+
+  // Update payment status
   const result = await Payment.updateOne(
     { transId },
     { $set: { paymentStatus: true } }
   );
+
+  // Redirect after all updates
   if (result.modifiedCount > 0) {
     res.redirect(process.env.SSLCOMMERZ_CLIENT_SUCCESS_REDIRECT_LINK as string);
+  } else {
+    res
+      .status(400)
+      .json({ message: "Payment already processed or update failed" });
   }
-  // console.log("Payment success hit with transId:", transId);
-  // // You can now update your DB, set payment status to 'paid', etc.
-  // res.status(200).json({ message: "Payment successful", transId });
 });
 
 const paymentFail = catchAsync(async (req, res) => {

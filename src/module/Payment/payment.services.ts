@@ -5,17 +5,19 @@ import { Payment } from "./payment.model";
 
 const paymentIntoDb = async (payload: any) => {
   console.log("payload", payload);
-  const bookingId = payload.bookingsId;
-  const bookings = await Bookings.findByIdAndUpdate(
-    bookingId,
-    {
-      status: "completed",
-    },
-    { new: true, runValidators: true }
-  );
+  // const bookingId = payload.bookingsId;
+  // const bookings = await Bookings.findByIdAndUpdate(
+  //   bookingId,
+  //   {
+  //     status: "completed",
+  //   },
+  //   { new: true, runValidators: true }
+  // );
   const result = await Payment.create(payload);
   return result;
 };
+
+
 
 // Get the Bookings of a specfic teacher
 const getTheScheduleOfSpecificTeacher = async (id: string) => {
