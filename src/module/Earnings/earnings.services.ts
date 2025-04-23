@@ -2,7 +2,10 @@ import AppError from "../../app/Error/AppError";
 import { Payment } from "../Payment/payment.model";
 
 const CalculateTotalEarnings = async (id: string) => {
-  const totalBookings = await Payment.find({ teacher: id });
+  const totalBookings = await Payment.find({
+    teacher: id,
+    paymentStatus: true,
+  });
   if (totalBookings.length === 0) {
     throw new AppError(404, "No Bookings Found");
   }

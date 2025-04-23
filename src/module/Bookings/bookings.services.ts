@@ -10,41 +10,41 @@ import { Student } from "../Student/student.model";
 
 // Create Bookings
 const createBookingsIntoDb = async (payload: TBookings) => {
-  // console.log(payload);
+  console.log(payload);
 
   // Time Difference In Hourse
-  const diffInHours = await timeDifference(payload.startTime, payload.endTime);
+  // const diffInHours = await timeDifference(payload.startTime, payload.endTime);
   const session = await mongoose.startSession();
   try {
     session.startTransaction();
 
     // ASSIGNED SCHEDULE
-    const assignedSchedule = await Bookings.find({
-      teacher: payload.teacher,
-      days: { $in: payload.days },
-    }).select("days startTime endTime");
+    // const assignedSchedule = await Bookings.find({
+    //   teacher: payload.teacher,
+    //   days: { $in: payload.days },
+    // }).select("days startTime endTime");
 
-    console.log("assigned schidule", assignedSchedule);
+    // console.log("assigned schidule", assignedSchedule);
 
-    const newSchedule = {
-      days: payload.days,
-      startTime: payload.startTime,
-      endTime: payload.endTime,
-    };
+    // const newSchedule = {
+    //   days: payload.days,
+    //   startTime: payload.startTime,
+    //   endTime: payload.endTime,
+    // };
 
-    assignedSchedule.forEach((schedule) => {
-      const existingStartTime = new Date(`2023-10-01T${schedule.startTime}`);
-      const existingEndTime = new Date(`2023-10-01T${schedule.endTime}`);
-      const newStartTime = new Date(`2023-10-01T${newSchedule.startTime}`);
-      const newEndTime = new Date(`2023-10-01T${newSchedule.endTime}`);
+    // assignedSchedule.forEach((schedule) => {
+    //   const existingStartTime = new Date(`2023-10-01T${schedule.startTime}`);
+    //   const existingEndTime = new Date(`2023-10-01T${schedule.endTime}`);
+    //   const newStartTime = new Date(`2023-10-01T${newSchedule.startTime}`);
+    //   const newEndTime = new Date(`2023-10-01T${newSchedule.endTime}`);
 
-      if (newStartTime < existingEndTime && newEndTime > existingStartTime) {
-        throw new AppError(
-          status.CONFLICT,
-          "Teacher is already booked for this time slot . Please choose a different time or day."
-        );
-      }
-    });
+    //   if (newStartTime < existingEndTime && newEndTime > existingStartTime) {
+    //     throw new AppError(
+    //       status.CONFLICT,
+    //       "Teacher is already booked for this time slot . Please choose a different time or day."
+    //     );
+    //   }
+    // });
 
     // Check if the teacher is available
     const teacher = await Teacher.findById(payload.teacher);
@@ -52,7 +52,7 @@ const createBookingsIntoDb = async (payload: TBookings) => {
     if (!teacher) {
       throw new Error("Teacher not found");
     }
-    payload.price = teacher.hourlyRate! * diffInHours * payload.duration;
+    // payload.price = teacher.hourlyRate! * diffInHours * payload.duration;
     const result = await Bookings.create(payload);
     return result;
   } catch (error: any) {
@@ -68,9 +68,19 @@ const getAllBookingsFromDb = async () => {
   return result;
 };
 
-// Get All Bookings
+// Get the Bookings of a specfic teacher
 const getTheBookingsOfSpecificTeacherFromDb = async (id: string) => {
   const result = await Bookings.find({ teacher: id });
+  if (result.length === 0) {
+    throw new AppError(status.BAD_GATEWAY, "No Bookings Found");
+  }
+  console.log(result);
+  return result;
+};
+
+// Get the Bookings of a specfic teacher
+const getTheBookingsOfSpecificStudentFromDb = async (id: string) => {
+  const result = await Bookings.find({ student: id });
   if (result.length === 0) {
     throw new AppError(status.BAD_GATEWAY, "No Bookings Found");
   }
@@ -167,6 +177,7 @@ export const BookingsServices = {
   createBookingsIntoDb,
   getAllBookingsFromDb,
   getTheBookingsOfSpecificTeacherFromDb,
+  getTheBookingsOfSpecificStudentFromDb,
   confirmedBookingsIntoDb,
   cancelBookingsIntoDb,
 };

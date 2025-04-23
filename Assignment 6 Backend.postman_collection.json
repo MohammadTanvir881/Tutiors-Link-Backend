@@ -177,7 +177,56 @@
 					"name": "getAllTeachers",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/teachers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"teachers"
+							],
+							"query": [
+								{
+									"key": "subject",
+									"value": "phy",
+									"disabled": true
+								},
+								{
+									"key": "rating",
+									"value": "4",
+									"disabled": true
+								},
+								{
+									"key": "hourlyRate",
+									"value": "1200",
+									"disabled": true
+								},
+								{
+									"key": "searchTerm",
+									"value": "dhaka",
+									"disabled": true
+								},
+								{
+									"key": "grade",
+									"value": "College",
+									"disabled": true
+								},
+								{
+									"key": "sortBy",
+									"value": "newest",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Fardin",
+									"disabled": true
+								}
+							]
+						}
 					},
 					"response": []
 				},
@@ -324,6 +373,34 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Schedule of A specific teacher",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0ZWFjaGVyMUBnbWFpbC5jb20iLCJyb2xlIjoidGVhY2hlciIsInVzZXJJZCI6IjY4MDBkYzM3NzA1MzExMWM3YjMyZWVhZiIsImlhdCI6MTc0NDk2ODU2OSwiZXhwIjoxNzQ1NTczMzY5fQ.1Oe4SKE_LEi-b_Rlh32XaTtM2ZT0tDoxO_q2z5Mz_q0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/payment/schedule/6800dc387053111c7b32eeb1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"payment",
+								"schedule",
+								"6800dc387053111c7b32eeb1"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -337,7 +414,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"teacher\": \"642b1f2fa56e3a001c8d2f4a\",\n  \"student\": \"642b1f3fa56e3a001c8d2f4b\",\n  \"days\": [\"Mon\", \"Wed\", \"Fri\"],\n  \"startTime\": \"15:00\",\n  \"endTime\": \"16:30\",\n  \"duration\": 50\n}\n",
+							"raw": "// {\n//   \"teacher\": \"67f6bcf9cb44703f1106d039\",\n//   \"student\": \"67f6bce9cb44703f1106d035\",\n//   \"days\": [\"Wed\", \"Mon\"],\n//   \"startTime\": \"19:00\",\n//   \"endTime\": \"20:00\",\n//   \"duration\": 15\n// }\n{\n    \"teacher\": \"67fe7d8f8d247ed5182701b3\",\n    \"student\": \"661f2b1d8c8e8fa7e5b9aef1\",\n    \"date\": \"2025-04-20\",\n    \"timeSlot\": \"10:00 AM\",\n    \"subject\": \"Physics\",\n    \"price\": 500,\n    \"status\": \"confirmed\",\n    \"duration\": 2\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -398,7 +475,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0ZWFjaGVyMUBnbWFpbC5jb20iLCJyb2xlIjoidGVhY2hlciIsInVzZXJJZCI6IjY3ZjZiY2Y5Y2I0NDcwM2YxMTA2ZDAzNyIsImlhdCI6MTc0NDQ3MDY3NiwiZXhwIjoxNzQ1MDc1NDc2fQ.ye9wj74UpOXKiP_2QpwTUb1K-ZqzJOTzez2qWBAysc4",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0ZWFjaGVyMUBnbWFpbC5jb20iLCJyb2xlIjoidGVhY2hlciIsInVzZXJJZCI6IjY4MDBkYzM3NzA1MzExMWM3YjMyZWVhZiIsImlhdCI6MTc0NDg5ODg3NCwiZXhwIjoxNzQ1NTAzNjc0fQ.9xxLacxneHo5JmtX-YocwtjK4svORcuVg12OUzcHw_U",
 								"type": "text"
 							}
 						],
@@ -412,7 +489,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/bookings/confirm/67fa81a4c8334d441b2b3d0a",
+							"raw": "http://localhost:5000/api/bookings/confirm/6800ddeb7053111c7b32eed6",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -422,7 +499,7 @@
 								"api",
 								"bookings",
 								"confirm",
-								"67fa81a4c8334d441b2b3d0a"
+								"6800ddeb7053111c7b32eed6"
 							]
 						}
 					},
@@ -467,6 +544,38 @@
 				},
 				{
 					"name": "Bookings Of A Specific Teacher",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"teacher\": \"642b1f2fa56e3a001c8d2f4a\",\n  \"student\": \"642b1f3fa56e3a001c8d2f4b\",\n  \"days\": [\"Mon\", \"Wed\", \"Fri\"],\n  \"startTime\": \"15:00\",\n  \"endTime\": \"16:30\",\n  \"duration\": 50\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/bookings",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bookings Of A Specific student",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},

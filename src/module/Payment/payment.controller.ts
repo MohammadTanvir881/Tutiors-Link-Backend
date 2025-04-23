@@ -9,6 +9,7 @@ import SSLCommerzPayment from "sslcommerz-lts";
 import app from "../../app";
 import { Payment } from "./payment.model";
 import { PaymentServices } from "./payment.services";
+import sendResponse from "../../utils/sendResponse";
 
 const store_id = process.env.SSLCOMMERZ_STORE_ID;
 const store_passwd = process.env.SSLCOMMERZ_STORE_PASSWORD;
@@ -28,7 +29,7 @@ const createPayment = catchAsync(async (req, res) => {
     tran_id: transId, // use unique tran_id for each api call
     success_url: `http://localhost:5000/api/payment/success/${transId}`,
     fail_url: `http://localhost:5000/api/payment/fail/${transId}`,
-    cancel_url: "http://localhost:3030/cancel",
+    cancel_url: `http://localhost:5000/api/payment/success/${transId}`,
     ipn_url: "http://localhost:3030/ipn",
     shipping_method: "Courier",
     product_name: "Computer.",
@@ -66,19 +67,22 @@ const createPayment = catchAsync(async (req, res) => {
           bookingsId: bookings._id,
           teacher: bookings.teacher,
           student: bookings.student,
-          days: bookings.days,
-          startTime: bookings.startTime,
-          endTime: bookings.endTime,
+          date: bookings.date,
+          timeSlot: bookings.timeSlot,
+          subject: bookings.subject,
+          // days: bookings.days,
+          // startTime: bookings.startTime,
+          // endTime: bookings.endTime,
           price: bookings.price,
           status: bookings.status,
           duration: bookings.duration,
           paymentStatus: bookings.paymentStatus,
           transId,
         };
-        console.log(finalOrder);
+        // console.log(finalOrder);
 
         const result = await PaymentServices.paymentIntoDb(finalOrder);
-        console.log("result", result);
+        // console.log("result", result);
         console.log("Redirecting to: ", GatewayPageURL);
       } catch (err) {
         console.error("Error inside SSLCommerz response handler:", err);
@@ -94,16 +98,37 @@ const createPayment = catchAsync(async (req, res) => {
 
 const paymentSuccess = catchAsync(async (req, res) => {
   const { transId } = req.params;
+
+  // Find the payment entry
+  const payment = await Payment.findOne({ transId });
+
+  if (!payment) {
+    res.status(404).json({ message: "Payment record not found" });
+    return;
+  }
+
+  // Update booking status
+  const bookingId = payment.bookingsId;
+  await Bookings.findByIdAndUpdate(
+    bookingId,
+    { status: "completed" },
+    { new: true }
+  );
+
+  // Update payment status
   const result = await Payment.updateOne(
     { transId },
     { $set: { paymentStatus: true } }
   );
+
+  // Redirect after all updates
   if (result.modifiedCount > 0) {
     res.redirect(process.env.SSLCOMMERZ_CLIENT_SUCCESS_REDIRECT_LINK as string);
+  } else {
+    res
+      .status(400)
+      .json({ message: "Payment already processed or update failed" });
   }
-  // console.log("Payment success hit with transId:", transId);
-  // // You can now update your DB, set payment status to 'paid', etc.
-  // res.status(200).json({ message: "Payment successful", transId });
 });
 
 const paymentFail = catchAsync(async (req, res) => {
@@ -118,8 +143,22 @@ const paymentFail = catchAsync(async (req, res) => {
   // res.status(200).json({ message: "Payment Fail", transId });
 });
 
+// Schedule of a specific teacher
+const scheduleOfSpecificTeacher = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const result = await PaymentServices.getTheScheduleOfSpecificTeacher(id);
+
+  sendResponse(res, {
+    statusCode: status.OK,
+    success: true,
+    message: "Schedule Retreived Successfully",
+    data: result,
+  });
+});
+
 export const PaymentControllers = {
   createPayment,
   paymentSuccess,
   paymentFail,
+  scheduleOfSpecificTeacher,
 };

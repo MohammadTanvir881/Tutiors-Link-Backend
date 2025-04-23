@@ -3,7 +3,6 @@ import sendResponse from "../../utils/sendResponse";
 import status from "http-status";
 import { UserServices } from "./user.services";
 
-
 //! Creating Student
 
 const createStudent = catchAsync(async (req, res) => {
@@ -14,26 +13,22 @@ const createStudent = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: status.OK,
     success: true,
-    message: "Student is created successfully",
+    message: "Student Registration successful",
     data: result,
   });
 });
 
- //! Creating Teacher
- 
+//! Creating Teacher
+
 const createTeacher = catchAsync(async (req, res) => {
   const { password, teacher: teacherData } = req.body;
 
-
-  const result = await UserServices.createTeacherIntoDB(
-    password,
-    teacherData
-  );
+  const result = await UserServices.createTeacherIntoDB(password, teacherData);
 
   sendResponse(res, {
     statusCode: status.OK,
     success: true,
-    message: "Teacher is created successfully",
+    message: "Teacher Registration successful",
     data: result,
   });
 });
@@ -66,6 +61,6 @@ const createTeacher = catchAsync(async (req, res) => {
 export const UserControllers = {
   createStudent,
   createTeacher,
-//   createAdmin,
-//   changeStatus,
+  //   createAdmin,
+  //   changeStatus,
 };

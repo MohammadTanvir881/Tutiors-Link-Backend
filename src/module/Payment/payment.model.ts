@@ -4,10 +4,10 @@ import { Days } from "../Bookings/bookings.constant";
 
 const paymentSchema = new Schema<Tpayment>(
   {
-    bookingsId : {
+    bookingsId: {
       type: Schema.Types.ObjectId,
       ref: "Bookings",
-      required: true
+      required: true,
     },
     teacher: {
       type: Schema.Types.ObjectId,
@@ -19,19 +19,31 @@ const paymentSchema = new Schema<Tpayment>(
       ref: "Student",
       required: true,
     },
-    days: {
-      type: [String],
-      enum: Days,
-      required: true,
-    },
-    startTime: {
+    date: {
       type: String,
       required: true,
     },
-    endTime: {
+    timeSlot: {
       type: String,
       required: true,
     },
+    subject: {
+      type: String,
+      required: true,
+    },
+    // days: {
+    //   type: [String],
+    //   enum: Days,
+    //   required: true,
+    // },
+    // startTime: {
+    //   type: String,
+    //   required: true,
+    // },
+    // endTime: {
+    //   type: String,
+    //   required: true,
+    // },
     price: {
       type: Number,
       default: 0,
@@ -43,7 +55,7 @@ const paymentSchema = new Schema<Tpayment>(
       default: "pending",
     },
     duration: {
-      type: Number,
+      type: String,
       required: true,
     },
     paymentStatus: {
