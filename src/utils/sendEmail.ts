@@ -1,3 +1,4 @@
+
 import nodemailer from "nodemailer";
 import config from "../app/config";
 
@@ -21,5 +22,5 @@ export const sendEmail = async (to: string, text: string, html: string) => {
     html, // html body
   });
 
-  console.log("Message sent: %s", info.messageId);
+  // console.log("Message sent: %s", info.messageId);
 };
