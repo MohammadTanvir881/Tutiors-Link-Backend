@@ -17,11 +17,9 @@ const paymentIntoDb = async (payload: any) => {
   return result;
 };
 
-
-
 // Get the Bookings of a specfic teacher
 const getTheScheduleOfSpecificTeacher = async (id: string) => {
-  const result = await Payment.find({ teacher: id });
+  const result = await Payment.find({ teacher: id, paymentStatus: true });
   if (result.length === 0) {
     throw new AppError(status.NOT_FOUND, "No Schedule Found");
   }
