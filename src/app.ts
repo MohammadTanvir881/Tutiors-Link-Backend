@@ -11,10 +11,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "https://tutor-link-frontend-nine.vercel.app",
-    ],
+    origin: ["http://localhost:3000", "https://tution-media.vercel.app"],
     credentials: true,
   })
 );
