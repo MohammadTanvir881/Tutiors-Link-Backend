@@ -13,7 +13,8 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
-      "https://tutor-link-frontend-nine.vercel.app",
+      "https://tutor-link-frontend-lovat.vercel.app/"//hasan
+      // "https://tutor-link-frontend-nine.vercel.app",
     ],
     credentials: true,
   })
