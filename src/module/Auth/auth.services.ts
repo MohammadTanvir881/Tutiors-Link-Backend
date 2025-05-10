@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import bcrypt from "bcryptjs";
 import { User } from "../User/user.model";
 import { TLoginUser } from "./auth.interface";
