@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import status from "http-status";
 import AppError from "../../app/Error/AppError";
 import { Teacher } from "./teacher.model";

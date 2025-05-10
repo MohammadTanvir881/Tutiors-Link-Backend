@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import status from "http-status";
 import AppError from "../../app/Error/AppError";
-import { Bookings } from "../Bookings/bookings.model";
+// import { Bookings } from "../Bookings/bookings.model";
 import { Payment } from "./payment.model";
 
 const paymentIntoDb = async (payload: any) => {

@@ -1,5 +1,5 @@
 import { Types } from "mongoose";
-import { TDays } from "../Bookings/bookings.types";
+// import { TDays } from "../Bookings/bookings.types";
 
 export type Tpayment = {
   bookingsId: Types.ObjectId;

@@ -1,5 +1,6 @@
+
 import { Types } from "mongoose";
-import { TDays } from "./bookings.types";
+// import { TDays } from "./bookings.types";
 
 export type TBookings = {
   teacher: Types.ObjectId;

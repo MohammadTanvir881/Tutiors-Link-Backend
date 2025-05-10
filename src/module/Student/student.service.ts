@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import status from "http-status";
 import { TStudent } from "./student.interface";
 import { Student } from "./student.model";

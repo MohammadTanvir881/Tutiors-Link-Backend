@@ -1,4 +1,7 @@
-//! Creating Payment
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+// Creating Payment
 
 import { ObjectId } from "mongodb";
 import catchAsync from "../../utils/catchAsync";
@@ -6,7 +9,7 @@ import { Bookings } from "../Bookings/bookings.model";
 import AppError from "../../app/Error/AppError";
 import status from "http-status";
 import SSLCommerzPayment from "sslcommerz-lts";
-import app from "../../app";
+// import app from "../../app";
 import { Payment } from "./payment.model";
 import { PaymentServices } from "./payment.services";
 import sendResponse from "../../utils/sendResponse";
@@ -60,7 +63,7 @@ const createPayment = catchAsync(async (req, res) => {
     .init(data)
     .then(async (apiResponse: any) => {
       try {
-        let GatewayPageURL = apiResponse.GatewayPageURL;
+        const GatewayPageURL = apiResponse.GatewayPageURL;
         res.send({ url: GatewayPageURL });
 
         const finalOrder = {

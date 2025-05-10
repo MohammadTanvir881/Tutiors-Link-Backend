@@ -1,6 +1,6 @@
 import { model, Schema } from "mongoose";
 import { TBookings } from "./bookings.interface";
-import { Days } from "./bookings.constant";
+// import { Days } from "./bookings.constant";
 
 const bookingsSchema = new Schema<TBookings>(
   {

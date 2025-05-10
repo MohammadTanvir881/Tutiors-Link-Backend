@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import mongoose from "mongoose";
 import { Teacher } from "../Teacher/teacher.model";
 import { TBookings } from "./bookings.interface";
 import { Bookings } from "./bookings.model";
 import AppError from "../../app/Error/AppError";
 import status from "http-status";
-import { timeDifference } from "./timeDifference";
+// import { timeDifference } from "./timeDifference";
 import { sendEmail } from "../../utils/sendEmail";
 import { Student } from "../Student/student.model";
 

@@ -1,8 +1,8 @@
 import { Router } from "express";
-import validateRequest from "../../utils/validateRequest";
-import { PaymentValidation } from "./payment.validation";
+// import validateRequest from "../../utils/validateRequest";
+// import { PaymentValidation } from "./payment.validation";
 import { PaymentControllers } from "./payment.controller";
-import { BookingsValidation } from "../Bookings/bookings.validation";
+// import { BookingsValidation } from "../Bookings/bookings.validation";
 import auth from "../Auth/auth";
 
 const router = Router();
